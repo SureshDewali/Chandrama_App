@@ -12,10 +12,14 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      
+      # This line is the magic - it creates the missing Android files
       - run: flutter create . --platforms android
+      
       - run: flutter pub get
       - run: flutter build apk --release
+      
       - uses: actions/upload-artifact@v3
         with:
-          name: my-apk
+          name: Chandrama-Masala-App
           path: build/app/outputs/flutter-apk/app-release.apk
